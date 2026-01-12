@@ -4,15 +4,17 @@
     <title>Médiathèque - Catalogue</title>
 </head>
 <body>
-    <h1>Catalogue par Catégories</h1>
+    <p><a href="/admin/">Accès Bibliothécaire</a></p>
+    <h1>Bienvenue à la Médiathèque du Château</h1>
+    <h2>Catalogue par Catégories</h2>
 
     <div class="category">
-        <h2>Livres</h2>
+        <h3>Livres</h3>
         <ul>
             {% for m in medias %}
                 {% if m.livre %} <li>
                         <strong>{{ m.name }}</strong> (Auteur : {{ m.livre.auteur }}) 
-                        - {% if m.disponible %}<span class="available">Dispo</span>{% else %}<span class="borrowed">Emprunté</span>{% endif %}
+                        - {% if m.disponible %}<span class="available">Disponible</span>{% else %}<span class="borrowed">Emprunté</span>{% endif %}
                     </li>
                 {% endif %}
             {% endfor %}
@@ -20,13 +22,13 @@
     </div>
 
     <div class="category">
-        <h2>DVDs</h2>
+        <h3>DVDs</h3>
         <ul>
             {% for m in medias %}
                 {% if m.dvd %}
                     <li>
                         <strong>{{ m.name }}</strong> (Réal : {{ m.dvd.realisateur }})
-                        - {% if m.disponible %}<span class="available">Dispo</span>{% else %}<span class="borrowed">Emprunté</span>{% endif %}
+                        - {% if m.disponible %}<span class="available">Disponible</span>{% else %}<span class="borrowed">Emprunté</span>{% endif %}
                     </li>
                 {% endif %}
             {% endfor %}
@@ -34,13 +36,13 @@
     </div>
 
     <div class="category">
-        <h2>CDs</h2>
+        <h3>CDs</h3>
         <ul>
             {% for m in medias %}
                 {% if m.cd %}
                     <li>
                         <strong>{{ m.name }}</strong> (Artiste : {{ m.cd.artiste }})
-                        - {% if m.disponible %}<span class="available">Dispo</span>{% else %}<span class="borrowed">Emprunté</span>{% endif %}
+                        - {% if m.disponible %}<span class="available">Disponible</span>{% else %}<span class="borrowed">Emprunté</span>{% endif %}
                     </li>
                 {% endif %}
             {% endfor %}
@@ -48,20 +50,20 @@
     </div>
 
     <div class="category">
-        <h2>Jeux de Plateau</h2>
+        <h3>Jeux de plateau</h3>
+        <h5>Consultation sur place uniquement</h5>
         <ul>
             {% for m in medias %}
                 {% if m.jeudeplateau %} 
                     <li>
                         <strong>{{ m.name }}</strong> (Créateur : {{ m.jeudeplateau.createur }})
-                        - <span class="available">Consultation sur place uniquement</span>
                     </li>
                 {% endif %}
             {% endfor %}
         </ul>
     </div>
 
-    <p><a href="/admin/">Accès Bibliothécaire</a></p>
     
+
 </body>
 </html>

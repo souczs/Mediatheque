@@ -6,4 +6,6 @@ admin.site.register(Membre)
 admin.site.register(Livre)
 admin.site.register(Dvd)
 admin.site.register(Cd)
-admin.site.register(JeuDePlateau)
+@admin.register(JeuDePlateau)
+class JeuDePlateauAdmin(admin.ModelAdmin):
+    fields = ('name', 'createur')

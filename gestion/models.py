@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Membre(models.Model):
@@ -13,6 +14,17 @@ class Media(models.Model):
     disponible = models.BooleanField(default=True)
     dateEmprunt = models.DateTimeField(null=True, blank=True)
     emprunteur = models.ForeignKey(Membre, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.emprunteur and not self.dateEmprunt:
+            self.disponible = False
+            self.dateEmprunt = timezone.now()
+            
+        elif not self.emprunteur:
+            self.disponible = True
+            self.dateEmprunt = None
+            
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

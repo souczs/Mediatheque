@@ -14,7 +14,7 @@
             {% for m in medias %}
                 {% if m.livre %} <li>
                         <strong>{{ m.name }}</strong> (Auteur : {{ m.livre.auteur }}) 
-                        - {% if m.disponible %}<span class="available">Disponible</span>{% else %}<span class="borrowed">Emprunté</span>{% endif %}
+                        - {% if m.disponible %}<span class="available"></span>Disponible</span>{% else %}<span class="borrowed"></span>Emprunté</span>{% endif %}
                     </li>
                 {% endif %}
             {% endfor %}
